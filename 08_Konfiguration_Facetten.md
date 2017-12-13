@@ -1,12 +1,12 @@
 # Konfiguration der Facetten
 
-Die Facetten innerhalb von VuFind basieren auf einzelnen Indexfeldern im Solr-Index. Die Anzeige und das Verhalten der Facetten in VuFind werden durch Einstellungen in der Datei ```facets.ini```gesteuert.
+Die Facetten innerhalb von VuFind basieren auf einzelnen Indexfeldern im Solr-Index. Die Anzeige und das Verhalten der Facetten in VuFind werden durch Einstellungen in der Datei `facets.ini` gesteuert.
 
-## facets.ini
+## Konfigurationsdatei facets.ini
 
-Öffnen Sie die Datei ```facets.ini```aus Ihrem lokalen Konfigurationsverzeichnis mit Mousepad.
+Öffnen Sie die Datei `facets.ini` aus Ihrem lokalen Konfigurationsverzeichnis mit einem Text Editor.
 
-Der mit „\[Results\]“ beginnende Abschnitt enthält die Facetten. Jede Zeile enthält einen Eintrag in der Form
+Der mit `[Results]` beginnende Abschnitt enthält die Facetten. Jede Zeile enthält einen Eintrag in der Form
 
 ```
 SolrIndexName = Anzeigename der Facette
@@ -16,60 +16,36 @@ Der Anzeigename selbst ist in englischer Sprache und wird innerhalb von VuFind �
 
 Einträge mit einem Semikolon am Beginn der Zeile sind ausgeblendet und werden nicht dargestellt.
 
-Die Reihenfolge innerhalb von VuFind entspricht der Reihenfolge innerhalb des Abschnitts „\[Results\]“. Möchten Sie die Facetten in einer anderen Reihenfolge anzeigen lassen, sortieren Sie einfach die entsprechenden Zeilen in der Datei ```facets.ini```um.
+Die Reihenfolge innerhalb von VuFind entspricht der Reihenfolge innerhalb des Abschnitts `[Results]`. Möchten Sie die Facetten in einer anderen Reihenfolge anzeigen lassen, sortieren Sie die entsprechenden Zeilen um.
 
 ## Ausblenden von Facetten
 
-Blenden Sie die Facetten für Institution und Gebäude aus:
+Blenden Sie die Facetten für Institution, Gebäude, Signatur (callnumber-first), Genre, Ära und Region aus, indem Sie ein Semikolon vor den jeweiligen Eintrag schreiben:
 
-```
-;institution = Institution
-;building = Library
-```
-
-Blenden Sie die Facette für die Signatur (callnumber-first) aus:
-
-```
-;callnumber-first = "Call Number"
-```
-
-Blenden Sie die Facetten für Genre, Ära und Region aus:
-
-```
-;genre_facet = Genre
-;era_facet = Era
-;geographic_facet = Region
-```
+* `;institution = Institution`
+* `;building = Library`
+* `;callnumber-first = "Call Number"`
+* `;genre_facet = Genre`
+* `;era_facet = Era`
+* `;geographic_facet = Region`
 
 ## Hinzufügen von Facetten
 
 Fügen Sie eine Facette für den Bestand als erste Facette hinzu:
 
-```
-collection = Collection
-```
+* `collection = Collection`
 
-## Übersetzung des Inhalts der Facette „Format“
+## Zwischenstand
 
-Schalten Sie die Übersetzung für den Inhalt der Facette „Format“ ein:
-
-```
-translated_facets[] = format
-```
-
-**Facetten vor der Anpassung**
-
-![](media/08/image1.png)
-
-**Facetten nach der Anpassung**
+Die Änderungen an den Facetten werden sofort auf der Webseite wirksam:
 
 ![](media/08/image2.png)
 
-## Übersetzung des Inhalts anderer Facetten
+## Übersetzung des Inhalts von Facetten
 
 Grundsätzlich können die Inhalte aller Facetten übersetzt werden.
 
-Zunächst müssen Sie analog zur Facette „Format“ definieren, dass eine bestimmte Facette übersetzt werden soll. Dies geschieht durch einen Eintrag, der mit ```translated_facets[] =``` beginnen muss und dem der Name des Indexfeldes folgen muss, auf welchem die Facette basiert.
+Zunächst müssen Sie definieren, dass eine bestimmte Facette übersetzt werden soll. Dies geschieht durch einen Eintrag weiter hinten in der Datei (etwa Zeile 176), der mit `translated_facets[] =` beginnen muss und dem der Name des Indexfeldes folgen muss, auf welchem die Facette basiert.
 
 Für die Sprache wäre dies also
 
@@ -85,27 +61,27 @@ Gehen Sie analog zum Kapitel „Übersetzungen“ in der Anleitung für die allg
 German = "Deutsch"
 English = "Englisch"
 French = "Französisch"
-Japanese = "Japanisch"
 Spanish = "Spanisch"
 Italian = "Italienisch"
+Polish = "Polnisch"
 ```
 
-  --------- -------------------------------------------------------------------------------------------------------------------------------------
-  **!!!**   Achten Sie unbedingt darauf, keine typographischen Anführungszeichen zu verwenden. Diese werden als Teil der Übersetzung angesehen.
-  --------- -------------------------------------------------------------------------------------------------------------------------------------
+---------
 
-**Vor der Anpassung**
+**!!!** Achten Sie unbedingt darauf, keine typographischen Anführungszeichen zu verwenden. Diese werden als Teil der Übersetzung angesehen.
 
-![](media/08/image6.png)
+--------- 
 
-**Nach der Anpassung**
+Die Facette "Sprache" sollte anschließend wie folgt aussehen:
 
 ![](media/08/image7.png)
 
+Damit die Änderung der Sprachdatei wirksam wird, müssen Sie den Cache für die Übersetzung leeren (vgl. Kapitel Übersetzung).
+
 ## Quellen
 
-Facets. VuFind Documentation.
-<https://vufind.org/wiki/adding_facets>
+VuFind Dokumentation: Facets (Stand: 21.12.2015)
+<https://vufind.org/wiki/configuration:facets>
 
-Working wiith Facets. VuFind Documentation.
-<https://vufind.org/wiki/working_with_facets>
+VuFind Dokumentation: Adding Facets. (Stand: 26.1.2016)
+<https://vufind.org/wiki/indexing:adding_facets>

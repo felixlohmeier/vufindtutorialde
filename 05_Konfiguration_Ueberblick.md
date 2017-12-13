@@ -1,7 +1,6 @@
 # Überblick zur Konfiguration
 
-Diese Themen werden wir in den Kapiteln zur Konfiguration von VuFind
-behandeln:
+Diese Themen werden wir in den Kapiteln zur Konfiguration von VuFind behandeln:
 
 * Allgemeine Einstellungen
 * Anpassung der Katalogoberfläche
@@ -9,30 +8,42 @@ behandeln:
 * Konfiguration von Kataloganreicherungen
 * Konfiguration der Suche
 
-Weitere Möglichkeiten zur Konfiguration werden in der VuFind-Dokumentation beschrieben (siehe unten im Abschnitt „Weiterführende Informationen“).
+Weitere Möglichkeiten zur Konfiguration werden in der [VuFind-Dokumentation](https://vufind.org/wiki/configuration) beschrieben.
 
-Bevor wir uns mit der eigentlichen Konfiguration beschäftigen, sind einige Vorbereitungen notwendig.
+Bevor wir uns mit der eigentlichen Konfiguration beschäftigen, ist eine kurze Vorbereitung notwendig.
 
-## Vorbereitung für die Konfiguration
+## Vorbereitung der Konfiguration
 
-Für die Konfigurationsdateien von VuFind gibt es ein globales und ein lokales Verzeichnis. Das globale Verzeichnis befindet sich unter dem Pfad ```/usr/local/vufind2/config/```. Das lokale Verzeichnis befindet sich unter ```/usr/local/vufind2/local/config```. Befindet sich eine Konfigurationsdatei auch im lokalen Verzeichnis, so wird für den entsprechenden Teil der Konfiguration die Datei aus dem lokalen Verzeichnis verwendet. Sie sollten alle Konfigurationsdateien, in welchen Sie Veränderungen vornehmen möchten, in das lokale Verzeichnis kopieren.
+Für die Konfigurationsdateien von VuFind gibt es ein globales und ein lokales Verzeichnis:
 
-Während des Tutorials werden wir mit den Dateien ```config.ini```und ```facets.ini```arbeiten. Die Datei ```config.ini```ist die zentrale Konfigurationsdatei von VuFind. Die Datei ```facets.ini```enthält Einstellungen zu den Facetten.
+* Das globale Konfigurationsverzeichnis befindet sich unter dem Pfad `/usr/local/vufind/config/vufind`
+* Das lokale Konfigurationsverzeichnis befindet sich unter dem Pfad `/usr/local/vufind/local/config/vufind`
 
-Öffnen Sie im Dateimanager das Verzeichnis ```/usr/local/vufind2/local/config/vufind/```:
+Befindet sich eine Konfigurationsdatei auch im lokalen Verzeichnis, so überschreiben die dort enthaltenen Informationen die globalen Einstellungen. Es wird empfohlen, Konfigurationsänderungen ausschließlich im lokalen Konfigurationsverzeichnis vorzunehmen. Dazu müssen ggf. Konfigurationsdateien, in denen Sie Veränderungen vornehmen möchten, zunächst in das lokale Verzeichnis kopiert werden.
+
+Während des Tutorials werden wir mit den Dateien `config.ini` und `facets.ini` arbeiten. Die Datei `config.ini` ist die zentrale Konfigurationsdatei von VuFind. Die Datei `facets.ini` enthält Einstellungen zu den Facetten.
+
+Lassen Sie sich die Inhalte des lokalen Konfigurationsverzeichnisses im Terminal anzeigen:
+
+```
+ls /usr/local/vufind/local/config/vufind
+```
 
 ![](media/05/image1.png)
 
-Die Dateien ```config.ini```und ```NoILS.ini```wurden während der Installation beim Schritt „Autokonfiguration“ angelegt.
+Die Dateien `config.ini` und `NoILS.ini`wurden während der Installation beim Schritt „Autokonfiguration“ angelegt. Für unser Tutorial fehlt noch die Datei `facets.ini`.
 
-Kopieren Sie die Datei ```facets.ini```aus dem Verzeichnis ```/usr/local/vufind2/config/vufind/```in das Verzeichnis ```/usr/local/vufind2/local/config/vufind/```.
+Kopieren Sie die Datei ```facets.ini```aus dem globalen Konfigurationsverzeichnis in das lokale Konfigurationsverzeichnis mit folgendem Befehl:
+
+```
+cp /usr/local/vufind/config/vufind/facets.ini /usr/local/vufind/local/config/vufind
+```
+
+Wenn Sie sich die Inhalte des lokalen Konfigurationsverzeichnisses erneut anzeigen lassen, sollte jetzt die Datei `facets.ini` enthalten sein.
+
+![](media/05/image2.png)
 
 ## Quellen
 
-Local Settings Directory. VuFind Documentation.
-<https://vufind.org/wiki/vufind2:local_settings_directory>
-
-## Weiterführende Informationen
-
-Configuration and Customization (VuFind 2.x). VuFind Documentation.
-<https://vufind.org/wiki/vufind2:configuration_and_customization>
+VuFind Dokumentation: Local Settings Directory (Stand 21.12.2015)
+<https://vufind.org/wiki/configuration:local_settings_directory>

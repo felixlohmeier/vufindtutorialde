@@ -8,7 +8,10 @@ Das Vorhaben wurde auf dem [6. VuFind-Anwendertreffen](http://www.vufind.de/anwe
 
 - [x] ODT mit Pandoc in Markdown umwandeln
 - [x] Gitbook mit Suchfunktion einrichten
-- [ ] Anleitung für VuFind 4 anpassen
+- [ ] Anleitung aktualisieren (VuFind 4)
+    - [ ] Kapitel 1-2 (VirtualBox/Xubuntu)
+    - [x] Kapitel 3-9 (VuFind 4.1)
+    - [ ] Kapitel 10-12 (neue Beispieldaten benötigt)
 - [ ] Test im Kurs [Bibliotheks- und Archivinformatik an der HTW Chur](https://www.gitbook.com/read/book/felixlohmeier/kurs-bibliotheks-und-archivinformatik)
 - [ ] Erweiterung um Kapitel zu Datenimport über OAI-PMH
 

@@ -2,132 +2,91 @@
 
 Die Gestaltung der Katalogoberfläche basiert auf sogenannten Templates. Es gibt HTML-Templates für den Aufbau einer Seite und CSS-Templates für das Layout. Die HTML-Templates enthalten außerdem Programmcode in der Skriptsprache PHP, in welcher die Webseiten von VuFind programmiert sind. Alle Templates zusammen werden als Theme bezeichnet.
 
-In diesem Kapitel werden wir ein eigenes Theme anlegen, den Footer von VuFind anpassen und das VuFind-Logo gegen ein eigenes Logo austauschen. Diese Schritte sollen Ihnen exemplarisch ein Grundverständnis für die Anpassung des Themes von VuFind geben.
+In diesem Kapitel werden wir ein eigenes Theme anlegen, den Footer von VuFind anpassen und das VuFind-Logo gegen ein eigenes Logo austauschen. Diese Schritte sollen Ihnen exemplarisch ein Grundverständnis für die Anpassung von Themes in VuFind geben.
 
-## Eigenes Theme anlegen
+## Eigenes Theme erstellen
 
-Öffnen Sie im Dateimanager das Verzeichnis ```/usr/local/vufind2/themes/```.
-
-Erstellen Sie darin ein neues Verzeichnis mit dem von Ihnen gewünschten Namen für Ihr eigenes Theme. (Hier werden wir den Namen „malis14“ für unser Theme verwenden.)
-
-Erstellen Sie in diesem Verzeichnis eine neue Datei namens ```theme.config.php```und öffnen Sie diese Datei in Mousepad.
-
-Fügen Sie folgenden Code ein:
+Mit Version 4.1 bietet VuFind ein Kommandozeilen-Tool, um ein neues Theme zu erstellen. Das letzte Wort im folgenden Befehl definiert den Namen für das neue Theme (hier werden wir `malis14` verwenden).
 
 ```
-<?php
-return array(
-    'extends' => 'bootprint3'
-);
+php /usr/local/vufind/public/index.php generate theme malis14
 ```
 
-Dies veranlasst VuFind dazu, alle in Ihrem Theme nicht definierten Templates durch entsprechende Templates aus dem Theme „bootprint3“ zu ersetzen. Das Theme „bootprint3“ ist das Standard-Theme von VuFind.
+Die Dateien für das neue Theme liegen anschließend im Ordner `/usr/local/vufind/themes/malis14`. Die lokale Konfigurationsdatei `/usr/local/vufind/local/config/vufind/config.ini` wurde automatisch angepasst. Sie können nun über die Webseite in einem neuen Menüpunkt `Layout` zwischen dem Standard-Theme (Bootstrap) und dem neuen Theme umschalten.
 
-## Theme für VuFind konfigurieren
-
-Öffnen Sie die Datei ```config.ini```aus Ihrem lokalen Konfigurationsverzeichnis und passen Sie darin im Abschnitt „\[Site\]“die Zeile
-
-```
-theme = bootprint3
-```
-
-wie folgt an
-
-```
-theme = malis14
-```
+![](media/07/image0.png)
 
 ## Anpassung des Footers
 
-Legen Sie im Verzeichnis Ihres Themes ein neues Verzeichnis ```templates```an.
-
-Wechseln Sie zum Verzeichnis ```/usr/local/vufind2/themes/bootstrap3/templates/```. Kopieren Sie daraus die Datei ```footer.phtml```in das Verzeichnis ```templates```Ihres Themes.
-
-Öffnen Sie anschließend die Datei mit Mousepad.
-
-Löschen sie diese beiden Zeilen
+Kopieren Sie mit dem folgenden Befehl die Template-Datei `footer.phtml` aus dem Standard-Theme (`/usr/local/vufind/themes/bootstrap3/templates/`) in das Verzeichnis `templates` Ihres Themes.
 
 ```
-<li><a href="<?=$this->url('alphabrowse-home')?>"><?=$this->transEsc('Browse Alphabetically')?></a></li>
-<li><a href="<?=$this->url('search-reserves')?>"><?=$this->transEsc('Course Reserves')?></a></li>
+cp /usr/local/vufind/themes/bootstrap3/templates/footer.phtml /usr/local/vufind/themes/malis14/templates/
 ```
 
-Löschen Sie dann diese beiden Zeilen
+Öffnen Sie anschließend die Datei mit einem Text Editor, löschen Sie die folgenden Zeilen und speichern Sie die Datei:
 
-```
-<li><a href="#"><?=$this->transEsc('Ask a Librarian')?></a></li>
-<li><a href="#"><?=$this->transEsc('FAQs')?></a></li>
-```
+* `<li><a href="<?=$this->url('alphabrowse-home')?>"><?=$this->transEsc('Browse Alphabetically')?></a></li>`
+* `<li><a href="<?=$this->url('search-reserves')?>"><?=$this->transEsc('Course Reserves')?></a></li>`
+* `<li><a href="<?=$this->url('content-page', ['page' => 'asklibrary']) ?>"><?=$this->transEsc('Ask a Librarian')?></a></li>`
+* `<li><a href="<?=$this->url('content-page', ['page' => 'faq']) ?>"><?=$this->transEsc('FAQs')?></a></li>`
 
-Speichern Sie anschließend die Datei.
+Durch die Löschungen wurde die Möglichkeit zum Aufruf der Funktionen „Alphabetisch durchstöbern“ (Browse Alphabetically), Semesterapparat (Course Reserves), „Fachauskunft der Bibliothek“ (Ask a Librarian) und „Häufig gestellte Fragen“ (FAQs) auf der Startseite von VuFind entfernt. Diese Funktionen werden wir innerhalb des Tutorials nicht konfigurieren.
 
-Durch die Löschungen wurde die Möglichkeit zum Aufruf der Funktionen „Alphabetisch durchstöbern“ („Browse Alphabetically“), Semesterapparat („Course Reserves“), „Fachauskunft der Bibliothek“ („Ask a Librarian“) und „Häufig gestellte Fragen“ („FAQs“) auf der Startseite von VuFind entfernt. Diese Funktionen werden wir innerhalb des Tutorials nicht konfigurieren.
-
-**Footer vor der Anpassung**
-
-![](media/07/image1.png)
-
-**Footer nach der Anpassung**
+Die Änderung wird sofort auf der Webseite sichtbar:
 
 ![](media/07/image2.png)
 
 ## Änderung des Logos über dem Suchschlitz
 
-Erstellen Sie im Verzeichnis Ihres Themes ein neues Verzeichnis namens ```images```. Legen Sie dort das gewünschte Logo ab. In unserem Fall ist das die Datei ```malis.png```.
+Legen Sie im Verzeichnis `/usr/local/vufind/themes/malis14` das gewünschte Logo ab. Wenn Sie kein eigenes Logo parat haben, können Sie das hier verwendete  `malis.png` herunterladen:
 
-Kopieren Sie aus dem Verzeichnis ```/usr/local/vufind2/themes/bootprint3/```das Verzeichnis ```less```und alle darin enthaltenen Dateien in das Verzeichnis Ihres Themes.
+```
+wget https://raw.githubusercontent.com/felixlohmeier/vufindtutorialde/master/media/07/malis.png -O /usr/local/vufind/themes/malis14/malis.png
+```
 
-Wechseln Sie in das Verzeichnis ```less```und öffnen Sie darin die Datei ```bootprint.less```mit Mousepad.
+Stellen Sie mit folgendem Befehl sicher, dass das Logo vom Webserver gelesen werden kann:
+```
+chmod +r /usr/local/vufind/themes/malis14/malis.png
+```
 
-Suchen Sie (Strg + F) den untenstehenden Abschnitt und ändern Sie die hier grün markierten Zeilen ab:
+Öffnen Sie nun im Verzeichnis `/usr/local/vufind/themes/malis14/less` die Datei `custom.less` mit einem Text Editor.
+
+1. Ersetzen Sie `@image-path: "../../local_theme_example/images";` durch `@image-path: "../../images";`
+2. Ersetzen Sie den Abschnitt `header` wie folgt:
 
 ```
 header {
-  margin-top:18px;
-  .fa.fa-bars {font-size:21px}
   .navbar {
-    border-radius:5px 5px 0 0;
-    padding:0 10px;
-    #searchForm {display:none !important}
     .navbar-brand {
       background-image:url('../../images/malis.png');
       color:transparent;
       height:100px;
-      margin-top:5px;
       width:100px;
-      &:hover,&:active,&:focus {
-        color:transparent;
-      }
+      &:hover,&:active,&:focus { color:transparent; }
     }
+  }
+}
 ```
 
-Unter „background-image“ tragen Sie den Pfad Ihres Bildes ein. Die Angaben bei „height“ und „width“ müssen den tatsächlichen Abmessungen Ihres Bildes in Pixeln sein. Das hier verwendete Bild ist 100 Pixel hoch und 100 Pixel breit.
+Unter `background-image` tragen Sie den Pfad Ihres Bildes ein. Die Angaben bei `height` und `width` müssen den tatsächlichen Abmessungen Ihres Bildes in Pixeln entsprechen. Das hier verwendete Bild ist 100 Pixel hoch und 100 Pixel breit.
 
-Führen Sie diese Befehle im Terminal aus:
+Führen Sie abschließend den folgenden Befehl im Terminal aus, um die veränderte Konfiguration zu aktivieren:
 
 ```
-cd /usr/local/vufind2/
-php util/cssBuilder.php
+php /usr/local/vufind/util/cssBuilder.php
 ```
 
-Der zweite Befehl baut aus den Dateien im Verzeichnis „less“ jedes Themes (!!!) eine neue Datei namens ```compiled.css```im Unterverzeichnis ```css```zusammen:
+Der Befehl baut aus den Dateien im Verzeichnis `less` jedes(!) Themes eine neue Datei namens `compiled.css` im Unterverzeichnis `css` zusammen.
 
-![](media/07/image3.png)
-
-Wenn Sie anschließend in Firefox die VuFind-Startseite neu aufrufen, wurde das bisher dort sichtbare VuFind-Logo durch Ihr Logo ersetzt. Dieses Logo wird auch auf allen Unterseiten von VuFind angezeigt.
-
-**Startseite vorher**
-
-![](media/07/image4.png)
-
-**Startseite nachher**
+Wenn Sie anschließend in Firefox die VuFind-Startseite neu aufrufen, wird oben links das verwendete Logo angezeigt.
 
 ![](media/07/image5.png)
 
 ## Quellen
 
-User Interface Customization (VuFind 2.x). VuFind Documentation.
-<https://vufind.org/wiki/vufind2:customizing_the_user_interface>
+VuFind Dokumentation: User Interface Customization (Stand 18.10.2017)
+<https://vufind.org/wiki/development:architecture:localization>
 
-Using LESS. VuFind Documentation.
-<https://vufind.org/wiki/using_less>
+VuFind Dokumentation: LESS / SASS (Stand 2.8.2017)
+<https://vufind.org/wiki/development:architecture:less>

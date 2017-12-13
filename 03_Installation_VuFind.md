@@ -1,48 +1,34 @@
 # Installation von VuFind
 
-Für den Betrieb von VuFind werden diese Softwarekomponenten benötigt:
+In den vorigen beiden Kapiteln haben Sie ein Ubuntu-Linux-Betriebssystem (16.04 LTS) in VirtualBox installiert. In diesem Kapitel installieren wir nun VuFind und die dafür benötigten Softwarekomponenten. Dazu gehören:
 
-* Webserver (Apache),
-* Suchindex (Solr),
-* Programmiersprache (PHP) und
-* Datenbank (MySQL).
-
-Optional kann ein Integriertes Bibliothekssystem an VuFind angebunden werden. (Dies ist nicht Bestandteil des Tutorials.)
+* Webserver (Apache)
+* Suchindex (Solr)
+* Programmiersprache (PHP)
+* Datenbank (MySQL)
 
 ## Aktualisierung des Betriebssystems
 
-Vor der Installation sollte Xubuntu auf den aktuellsten Stand gebracht werden.
-
-Führen Sie folgenden Befehl im Terminal aus:
+Vor der Installation sollte das Betriebssystem auf den aktuellsten Stand gebracht werden. Führen Sie dazu folgenden Befehl im Terminal aus:
 
 ```
-sudo apt-get update
+sudo apt-get update && sudo apt-get dist-upgrade
 ```
 
-Führen Sie danach diesen Befehl aus:
-
-```
-sudo apt-get dist-upgrade
-```
+Der Installation der Updates müssen Sie mit der Antwort „J“ auf die Frage „Möchten Sie fortfahren? \[J/n\]“ zustimmen.
 
 Anschließend sollte das System neu gestartet werden:
 
 ```
-sudo shutdown –r now
+sudo shutdown -r now
 ```
 
 ## Download des Installationspaketes
 
-Stellen Sie sicher, dass Sie die im Terminal eingegebenen Befehle im Kontext des Standardverzeichnisses Ihres Benutzers ausführen. Dieses Verzeichnis wird Homeverzeichnis genannt. In diesem Tutorial verwenden wir den Benutzer „stefan“ und dieser hat sein Homeverzeichnis unter dem Pfad ```/home/stefan/ ```.
-
-Im Terminal erkennen Sie das Homeverzeichnis an einer Tilde mit Dollar-Zeichen (```~$```), die vor dem Cursor angezeigt wird:
-
-![](media/03/image1.png)
-
 Führen Sie im Terminal folgenden Befehl aus:
 
 ```
-wget http://downloads.sourceforge.net/vufind/vufind_2.4.1.deb?use_mirror=osdn -O vufind_2.4.1.deb
+wget http://downloads.sourceforge.net/vufind/vufind_4.1.1.deb?use_mirror=osdn -O ~/vufind_4.1.1.deb
 ```
 
 Die Installationsdatei (ein sogenanntes Paket) wird in Ihr Homeverzeichnis heruntergeladen:
@@ -51,96 +37,69 @@ Die Installationsdatei (ein sogenanntes Paket) wird in Ihr Homeverzeichnis herun
 
 ## Installation des Paketes
 
-Führen Sie diesen Befehl im Terminal aus:
+Führen Sie im Terminal folgenden Befehl aus:
 
 ```
-sudo dpkg -i vufind_2.4.1.deb
+sudo apt install -f ~/vufind_4.1.1.deb
 ```
 
-Dieser Befehl installiert VuFind. Zunächst wird diese Installation jedoch mit einer Fehlermeldung abgebrochen, weil nicht alle für VuFind benötigten Pakete (sogenannte abhängige Pakete) installiert sind. Bei den abhängigen Paketen handelt es sich um die in der Einleitung beschriebenen Softwarekomponenten.
+Dieser Befehl installiert VuFind und alle für VuFind benötigten Pakete (sogenannte abhängige Pakete). Bei diesen Paketen handelt es sich um die in der Einleitung beschriebenen Softwarekomponenten (Apache, Solr, MySQL, PHP).
 
-![](media/03/image3.png)
-
-Sie müssen daher zunächst alle abhängigen Pakete installieren. Danach wird automatisch VuFind installiert.
-
-Führen Sie folgenden Befehl aus:
-
-```
-sudo apt-get install –f
-```
-
-Der Befehl installiert die abhängigen Pakete und gibt zahlreiche Informationen im Terminal aus. Zu Beginn wird ermittelt, welche abhängigen Pakete tatsächlich neu installiert werden müssen. Der Installation müssen Sie mit der Antwort „j“ auf die Frage „Möchten Sie fortfahren? \[J/n\]“ zustimmen. Während der eigentlichen Installation werden weitere Informationen ausgegeben.
+Der Installation müssen Sie mit der Antwort „J“ auf die Frage „Möchten Sie fortfahren? \[J/n\]“ zustimmen.
 
 Für die Installation von MySQL wird die Angabe eines Root-Kennwortes erfragt:
 
 ![](media/03/image4.png)
 
-Aus Sicherheitsgründen sollten Sie dieses Kennwort vergeben. Notieren Sie sich das Kennwort, da es für die spätere Konfiguration von VuFind benötigt wird. Es erscheint ein weiteres Fenster (ohne Abbildung), in welchem Sie die Eingabe des Kennworts wiederholen müssen.
+Notieren Sie sich das Kennwort, da es für die spätere Konfiguration von VuFind benötigt wird. Es erscheint ein weiteres Fenster, in welchem Sie die Eingabe des Kennworts wiederholen müssen. Danach wird die Installation fortgesetzt. 
 
-Danach wird die Installation fortgesetzt und wiederum Informationen im Terminal ausgegeben.
-
-Am Ende der Installation erscheint im Terminal ein Hinweis auf eine erforderliche Verlinkung zwischen VuFind und dem Apache-Webserver:
-
-![](media/03/image5.png)
-
-Diesen Hinweis können Sie ignorieren.
-
-Starten Sie Firefox. (Dieser befindet sich unter „Startmenü &gt; Internet &gt; Firefox Web Browser“.) Rufen Sie die Webseite <http://localhost/vufind> auf. Nach kurzer Zeit erscheint die Startseite von VuFind:
+Wenn die Installation abgeschlossen ist, starten Sie den Firefox Browser. Rufen Sie die Webseite <http://localhost/vufind> auf. Nach kurzer Zeit erscheint die Startseite von VuFind:
 
 ![](media/03/image6.png)
 
-Das Erscheinen der Startseite zeigt, dass die Verlinkung zwischen VuFind und dem Apache-Webserver bereits vorhanden ist. Der Hinweis „Es ist ein Fehler aufgetreten“ bedeutet in diesem Fall, dass VuFind noch nicht gestartet wurde. Dies wird im nächsten Schritt geschehen.
+Der Hinweis „Es ist ein Fehler aufgetreten“ erscheint, weil die Suchmaschine Solr noch nicht gestartet wurde.
 
-## Erste Konfiguration und Start von VuFind
+## Berechtigungen setzen und Solr starten
 
-Führen Sie im Terminal diesen Befehl aus:
-
-```
-source /etc/profile.d/vufind.sh
-```
-
-Durch den Befehl wird ein Skript ausgeführt, welches sogenannte Umgebungsvariablen erstellt. Diese werden zum Betrieb von VuFind benötigt und enthalten jeweils den Pfad zur Java-Instanz, zum Hauptverzeichnis von VuFind sowie zum Verzeichnis mit Ihren lokalen Einstellungen für VuFind.
-
-Wechseln Sie in das Hauptverzeichnis von VuFind:
+Führen Sie im Terminal folgenden Befehl aus:
 
 ```
-cd /usr/local/vufind2/
+source /etc/profile
 ```
 
-Starten Sie VuFind:
+Durch diesen Befehl werden die Umgebungsvariablen neu eingelesen, was uns einen Neustart erspart. Die Umgebungsvariablen werden zum Betrieb von VuFind benötigt und enthalten den Pfad zur Java-Instanz, zum Hauptverzeichnis von VuFind sowie zum Verzeichnis mit Ihren lokalen Einstellungen für VuFind.
+
+Geben Sie folgende Befehle ein, um notwendige Berechtigungen für Solr und VuFind zu konfigurieren:
 
 ```
-./vufind.sh start
+sudo chown -R $(id -u):$(id -g) /usr/local/vufind/
+sudo chown -R www-data:www-data /usr/local/vufind/local/config
+sudo chown -R www-data:www-data /usr/local/vufind/local/cache
 ```
 
-In dem Terminal-Fenster, in welchem Sie VuFind gestartet haben, werden beim Start und während der weiteren Nutzung von VuFind zahlreiche Statusinformationen ausgegeben.
+Der erste Befehl setzt den aktuell angemeldeten Nutzer als Eigentümer des Verzeichnisses `/usr/local/vufind`. Damit der Apache-Webserver auf bestimmte Verzeichnisse zugreifen kann, wird für die Unterordner `local/config` und `local/cache` der Nutzer `www-data` als Eigentümer gesetzt.
 
-  --------- --------------------------------------------------------------------------------------------
-  **!!!**   Benutzen Sie für alle übrigen Aktionen im Terminal ab sofort ein zweites Terminal-Fenster.
-  --------- --------------------------------------------------------------------------------------------
+Starten Sie dann den Suchindex Solr:
 
-Aktualisieren Sie die noch im Firefox geöffnete Startseite von VuFind:
+```
+/usr/local/vufind/solr.sh start
+```
+
+Wenn Sie die noch im Firefox geöffnete Startseite von VuFind aktualisieren, wird der Fehlerhinweis nicht mehr angezeigt:
 
 ![](media/03/image7.png)
 
-Der Fehlerhinweis wird nicht mehr angezeigt und VuFind wurde somit erfolgreich gestartet.
+## Automatische Konfiguration
 
-Öffnen Sie nun ein zweites Terminal und führen Sie nacheinander folgende Befehle aus:
-
-```
-sudo php5enmod mcrypt
-sudo service apache2 restart
-```
-
-Dadurch wird ein für den Betrieb von PHP benötigtes Modul namens „Mcrypt“ korrekt nachinstalliert und anschließend der Webserver (apache2) neu gestartet.
-
-Öffnen Sie in Firefox die Seite <http://localhost/vufind/Install/Home>.
-
-Angezeigt wird die Autokonfiguration von VuFind:
+Öffnen Sie jetzt die Seite <http://localhost/vufind/Install/Home>. Angezeigt wird die Autokonfiguration von VuFind:
 
 ![](media/03/image8.png)
 
-Klicken Sie den Schalter „Reparieren“ hinter „Basic Configuration“ an. Dies wird quittiert mit „Your configuration has been successfully updated.“
+### Grundkonfiguration
+
+Klicken Sie den Schalter „Reparieren“ hinter „Basic Configuration“ an. Dies wird quittiert mit „Your configuration has been successfully updated.“ Wechseln Sie über den Link "Autokonfiguration" wieder zurück auf die vorige Seite.
+
+### Datenbank
 
 Beim Reparieren von „Database“ erscheint eine Eingabemaske:
 
@@ -150,61 +109,63 @@ Geben Sie in das Feld „New user password“ ein Kennwort ein. Wiederholen Sie 
 Geben Sie im Feld „MySQL Root Password“ das während der VuFind-Installation vergebene Root-Kennwort für MySQL.
 Klicken Sie anschließend „Abschicken“ an.
 
+## Anbindung Bibliothekssystem
+
 Beim Reparieren von „ILS“ erscheint ebenfalls eine Eingabemaske:
 
 ![](media/03/image10.png)
 
-Wählen Sie „NoILS“ aus der Liste aus.
-Klicken Sie anschließend „Daten absenden“ an.
+Wählen Sie „NoILS“ aus der Liste aus. Klicken Sie anschließend „Daten absenden“ an.
 
-  --------- ---------------------------------------------------------------------------------------------------------------------------------------------------------
-  **!!!**   Alternativ können Sie Ihr Lokalsystem aus der Liste wählen und es konfigurieren. Beachten Sie jedoch, dass dies nicht Bestandteil dieses Tutorials ist.
-  --------- ---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------
+
+**!!!** Alternativ können Sie Ihr Lokalsystem aus der Liste wählen und es konfigurieren. Beachten Sie jedoch, dass dies nicht Bestandteil dieses Tutorials ist.
+
+---------
+
+Zurück auf der Konfigurationsseite erhalten wir weiterhin die Fehlermeldung "ILS... Fehlgeschlagen". Die Autokonfiguration hat die Einstellung auf NoILS mit der Option „ils-offline“ gesetzt, die für Wartungsarbeiten gedacht ist. Wir müssen diese noch auf „ils-none“ setzen, um VuFind zu signalisieren, dass tatsächlich kein Lokalsystem angebunden ist. Diese Einstellung ist in der Datei `/usr/local/vufind/local/config/vufind/NoILS.ini` vorzunehmen. Geben Sie dazu im Terminal folgenden Befehl ein:
+
+```
+sudo sed -i 's/mode = ils-offline/mode = ils-none/g' /usr/local/vufind/local/config/vufind/NoILS.ini
+```
+
+Wenn Sie anschließend die Seite Autokonfiguration neu laden, wird "ILS... OK" angezeigt.
+
+### Sicherheitseinstellungen
 
 Klicken Sie abschließend den Schalter „Reparieren“ im Bereich „Security“ an.
 
-Am Fuß der Seite erscheint nun ein Link zum Abschalten der Autokonfiguration:
+Unterhalb der Statusmeldungen erscheint nun ein Link zum Abschalten der Autokonfiguration:
 
 ![](media/03/image11.png)
 
 Klicken Sie „Disable Auto Configuration“ an.
-Dies wird mit „Auto configuration has been successfully disabled.“ quittiert.
 
-Wechseln Sie ins Terminal. Ersetzen Sie im folgenden Befehl „stefan“ durch Ihren Benutzernamen und führen Sie den Befehl aus:
-
-```
-sudo chown –R stefan:stefan /usr/local/vufind2/local/config
-```
-
-Dieser Befehl sorgt dafür, dass Ihr Benutzer zum Besitzer des Verzeichnisses\ ```/usr/local/vufind2/local/config```wird. Das Verzeichnis enthält die lokale Konfiguration für VuFind (mehr dazu bei der Konfiguration).
-
-Öffnen Sie im Dateimanager den Pfad ```/usr/local/vufind2/local/config/vufind/```. Öffnen Sie darin die Datei ```NoILS.ini```mit der Anwendung „Mousepad“.
-
-Ändern Sie darin die Zeile
+Dies wird mit „Auto configuration has been successfully disabled.“ und der Empfehlung quittiert, die Berechtigungen für das Konfigurationsverzeichnis sicherheitshalber anzupassen. Geben Sie dazu noch den folgenden Befehl ins Terminal ein:
 
 ```
-mode = ils-offline
+sudo chown -R $(id -u):$(id -g) /usr/local/vufind/local/config
 ```
 
-in
+Dieser Befehl sorgt dafür, dass Ihr Benutzer zum Besitzer des Verzeichnisses `/usr/local/vufind/local/config` wird und dieses nicht mehr durch den Webserver verändert werden kann. Das Verzeichnis enthält die lokale Konfiguration für VuFind (mehr dazu in den folgenden Kapiteln).
 
-```
-mode = ils-none
-```
+## Zwischenstand
 
-Die Einstellung „ils-offline“ ist für Wartungsarbeiten gedacht. Die Einstellung „ils-none“ signalisiert VuFind, dass tatsächlich kein Lokalsystem angebunden ist.
+Die automatische Konfiguration von VuFind ist damit abgeschlossen und das System einsatzbereit.
+
+Im nächsten Schritt importieren wir Testdaten, denn momentan ist der Suchindex noch komplett leer.
 
 ## Sicherungspunkt in VirtualBox setzen
 
-Fahren Sie nun Xubuntu herunter und setzen Sie in VirtualBox einen Sicherungspunkt namens „VuFind 2.4.1, bereit für Testimport“.
+Fahren Sie nun das Betriebssystem herunter und setzen Sie in VirtualBox einen Sicherungspunkt namens „VuFind, bereit für Testimport“.
 
 ## Quellen
 
-Installation Notes. VuFind Documentation.
-<https://vufind.org/wiki/installation_readme>
+VuFind Dokumentation: Installation Notes (Stand: 20.11.2017)
+<https://vufind.org/wiki/installation:notes>
 
-Local Settings Directory. VuFind Documentation.
-<https://vufind.org/wiki/vufind2:local_settings_directory>
+VuFind Dokumentation: Local Settings Directory (Stand 21.12.2015)
+<https://vufind.org/wiki/configuration:local_settings_directory>
 
-VuFind 2.x on Ubuntu. VuFind Documentation.
-<https://vufind.org/wiki/vufind2:installation_ubuntu>
+VuFind on Ubuntu. VuFind Documentation (Stand 20.11.2017)
+<https://vufind.org/wiki/installation:ubuntu>
