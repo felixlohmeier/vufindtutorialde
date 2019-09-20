@@ -42,12 +42,12 @@ Die Änderung wird sofort auf der Webseite sichtbar:
 Legen Sie im Verzeichnis `/usr/local/vufind/themes/malis14` das gewünschte Logo ab. Wenn Sie kein eigenes Logo parat haben, können Sie das hier verwendete  `malis.png` herunterladen:
 
 ```
-wget https://raw.githubusercontent.com/felixlohmeier/vufindtutorialde/master/media/07/malis.png -O /usr/local/vufind/themes/malis14/malis.png
+wget https://raw.githubusercontent.com/felixlohmeier/vufindtutorialde/master/media/07/malis.png -O /usr/local/vufind/themes/malis14/images/malis.png
 ```
 
 Stellen Sie mit folgendem Befehl sicher, dass das Logo vom Webserver gelesen werden kann:
 ```
-chmod +r /usr/local/vufind/themes/malis14/malis.png
+chmod +r /usr/local/vufind/themes/malis14/images/malis.png
 ```
 
 Öffnen Sie nun im Verzeichnis `/usr/local/vufind/themes/malis14/less` die Datei `custom.less` mit einem Text Editor.
