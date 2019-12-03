@@ -1,5 +1,3 @@
-# Summary
-
 * [Einleitung](README.md)
 * [01. Installation von VirtualBox](01_Installation_VirtualBox.md)
 * [02. Installation von Linux (Xubuntu)](02_Installation_Xubuntu.md)

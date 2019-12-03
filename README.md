@@ -4,22 +4,22 @@ Das Tutorial basiert auf einer [Projektarbeit von Stefan Niesner](http://malispr
 
 ## TODO
 
-Das Vorhaben wurde auf dem [6. VuFind-Anwendertreffen](http://www.vufind.de/anwendertreffen/anwendertreffen-2017/) in einem [Vortrag](https://felixlohmeier.de/slides/2017-09-28_vufind-anwendertreffen-keynote.html#/38) angekündigt und wird im Zeitraum Oktober-November 2017 bearbeitet.
+Das Vorhaben wurde auf dem [6. VuFind-Anwendertreffen](http://www.vufind.de/anwendertreffen/anwendertreffen-2017/) in einem [Vortrag](https://felixlohmeier.de/slides/2017-09-28_vufind-anwendertreffen-keynote.html#/38) angekündigt und ist noch in Bearbeitung.
 
 - [x] ODT mit Pandoc in Markdown umwandeln
-- [x] Gitbook mit Suchfunktion einrichten
-- [ ] Anleitung aktualisieren (VuFind 4)
-    - [ ] Kapitel 1-2 (VirtualBox/Xubuntu)
-    - [x] Kapitel 3-9 (VuFind 4.1)
-    - [ ] Kapitel 10-12 (neue Beispieldaten benötigt)
-- [ ] Test im Kurs [Bibliotheks- und Archivinformatik an der HTW Chur](https://www.gitbook.com/read/book/felixlohmeier/kurs-bibliotheks-und-archivinformatik)
+- [x] GitBook mit Suchfunktion einrichten
+- [x] Auf VuFind 4 aktualisieren (Kapitel 3-9)
+- [x] Test im Kurs [Bibliotheks- und Archivinformatik an der HTW Chur](https://www.gitbook.com/read/book/felixlohmeier/kurs-bibliotheks-und-archivinformatik)
+- [x] Docsify und GitHub Pages statt GitBook
+- [ ] Auf VuFind 6 aktualisieren
+- [ ] VirtualBox Installation aktualisieren (Kapitel 1-2)
+- [ ] Neue Beispieldaten (Kapitel 10-12)
 - [ ] Erweiterung um Kapitel zu Datenimport über OAI-PMH
 
 ## Formate
 
-* Lesefassung bei GitBook \(HTML\): <https://www.gitbook.com/read/book/felixlohmeier/vufind-tutorial-de>
-* Druckfassung bei GitBook \(PDF\): <https://www.gitbook.com/download/pdf/book/felixlohmeier/vufind-tutorial-de>
-* Repository bei GitHub \(zum Nachnutzen\): <https://github.com/felixlohmeier/vufindtutorialde>
+* Lesefassung bei GitHub Pages (HTML): <https://felixlohmeier.github.io/vufindtutorialde>
+* Repository bei GitHub (zum Nachnutzen): <https://github.com/felixlohmeier/vufindtutorialde>
 
 ## Inhalte
 
