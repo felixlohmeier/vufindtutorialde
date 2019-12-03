@@ -94,7 +94,7 @@ Die Übersetzung hinter dem Gleichzeichen muss in Anführungszeichen stehen.
 
 Um Übersetzungen anzupassen, sollten Sie ebenso wie bei der übrigen Konfiguration Änderungen im Verzeichnis `local` vornehmen. Innerhalb von VuFind werden die Einstellungen für die Übersetzungen vererbt. Einträge für eine Sprache im lokalen Sprachverzeichnis erhalten dabei den Vorrang gegenüber Einträgen in der Standardsprachdatei. Bei Übersetzungen ist keine vollständige Kopie der Standardsprachdatei notwendig. Es reicht aus, wenn Sie Ihre Änderungen in eine neue Datei schreiben. Erstellen Sie dazu mit folgenden Befehlen im Terminal den Ordner `languages` und die Datei `de.ini`:
 
-```
+```bash
 mkdir /usr/local/vufind/local/languages
 touch /usr/local/vufind/local/languages/de.ini
 ```
@@ -131,7 +131,7 @@ Your book bag is empty = "Ihre Merkliste ist leer"
 
 Damit die Änderungen wirksam werden, müssen wir noch den Cache für die Sprachinformationen leeren. Führen Sie dazu diesen Befehl im Terminal aus:
 
-```
+```bash
 sudo rm -rf /usr/local/vufind/local/cache/languages
 ```
 

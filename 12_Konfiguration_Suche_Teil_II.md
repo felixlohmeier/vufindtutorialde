@@ -14,7 +14,7 @@ Suchen Sie anschließend nach dem Suchterm „auto“:
 
 Gehen Sie wie im Folgenden beschrieben vor, um die Suchterme „kfz“ und „auto“ bei der als Synonyme zu definieren.
 
-Öffnen Sie im Verzeichnis ```/usr/src/vufind2/solr/biblio/conf/```die Datei ```synonyms.txt``` mit Mousepad.
+Öffnen Sie im Verzeichnis `/usr/src/vufind2/solr/biblio/conf/`die Datei `synonyms.txt` mit Mousepad.
 
 Fügen Sie in die Datei folgende Zeile ein
 
@@ -40,7 +40,7 @@ Führen Sie in VuFind eine Suche nach „auto beruf motorrad“ durch. Diese erg
 
 ![](media/12/image5.png)
 
-Öffnen Sie im Verzeichnis ```/usr/src/vufind2/solr/biblio/conf/```die Datei ```solrconfig.xml```mit Mousepad.
+Öffnen Sie im Verzeichnis `/usr/src/vufind2/solr/biblio/conf/`die Datei `solrconfig.xml` mit Mousepad.
 
 Suchen Sie darin diese Zeile:
 
@@ -48,7 +48,7 @@ Suchen Sie darin diese Zeile:
 <requestHandler name="dismax" class="solr.SearchHandler">
 ```
 
-Fügen Sie zwischen ```<str name="spellcheck.count">20</str>``` und  ```</lst>```die folgende Zeile ein:
+Fügen Sie zwischen `<str name="spellcheck.count">20</str>` und  `</lst>` die folgende Zeile ein:
 
 ```
 <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>

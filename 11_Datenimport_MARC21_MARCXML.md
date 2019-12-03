@@ -18,19 +18,19 @@ Auf der nächsten Seite werden eine Beispieldatei und die Daten selbst zum Downl
 ![](media/11/image2.png)
 
 
-Laden Sie die erste Datei ```tibkat_full_20121030_1_of_4.tgz```in das Verzeichnis ```Downloads```in Ihrem Homeverzeichnis herunter.
+Laden Sie die erste Datei `tibkat_full_20121030_1_of_4.tgz` in das Verzeichnis `Downloads` in Ihrem Homeverzeichnis herunter.
 
 ## Entpacken
 
-Entpacken Sie die heruntergeladene Datei in das Verzeichnis ```/usr/local/vufind2/local/harvest/```. Wählen Sie dazu die Datei im Dateimanager aus und klicken Sie dann im Kontextmenü „Entpacken nach…“ (ohne Abbildung) an. Die Archivdatei enthält ein Verzeichnis namens ```tibkat_full_20150305_1_of_4```. In diesem Verzeichnis befinden sich die Daten in einzelnen MARCXML-Dateien. Jede Datei enthält 2.000 Datensätze.
+Entpacken Sie die heruntergeladene Datei in das Verzeichnis `/usr/local/vufind2/local/harvest/`. Wählen Sie dazu die Datei im Dateimanager aus und klicken Sie dann im Kontextmenü „Entpacken nach…“ (ohne Abbildung) an. Die Archivdatei enthält ein Verzeichnis namens `tibkat_full_20150305_1_of_4`. In diesem Verzeichnis befinden sich die Daten in einzelnen MARCXML-Dateien. Jede Datei enthält 2.000 Datensätze.
 
 Da wir uns im Rahmen des Tutorials mit dem Import vertraut machen wollen, werden wir nur insgesamt 50.000 Datensätze importieren.
 
-Erstellen Sie im Verzeichnis ```/usr/local/vufind2/local/harvest/```ein neues Verzeichnis namens ```TIBKAT```. Kopieren Sie die ersten 25 XML-Dateien aus dem Verzeichnis ```tibkat_full_20150305_1_of_4 ```in das Verzeichnis ```TIBKAT```.
+Erstellen Sie im Verzeichnis `/usr/local/vufind2/local/harvest/`ein neues Verzeichnis namens `TIBKAT`. Kopieren Sie die ersten 25 XML-Dateien aus dem Verzeichnis `tibkat_full_20150305_1_of_4 ` in das Verzeichnis `TIBKAT`.
 
 ## Import vorbereiten
 
-Öffnen Sie mit Mousepad die Datei ```marc_local.properties``` im Verzeichnis ```/usr/local/vufind2/import/```. Ändern Sie die beim Testimport editierten Werte „collection“ und „institution“ wie folgt:
+Öffnen Sie mit Mousepad die Datei `marc_local.properties` im Verzeichnis `/usr/local/vufind2/import/`. Ändern Sie die beim Testimport editierten Werte „collection“ und „institution“ wie folgt:
 
 ```
 collection = "TIBKAT"
@@ -43,7 +43,7 @@ Starten Sie VuFind.
 
 Führen Sie im Terminal die folgenden Befehle aus:
 
-```
+```bash
 cd /usr/local/vufind2/harvest/
 ./batch-import-marc.sh TIBKAT
 ```
@@ -53,7 +53,7 @@ Der zweite Befehl startet den Import. Dieser verarbeitet nacheinander die einzel
 ![](media/11/image3.png)
 
 Während des Importes werden die importierten Dateien in ein Verzeichnis
-namens ```processed```verschoben. Wird der Import nach einer Unterbrechung fortgesetzt, werden do die Dateien im Ordner ```processed```nicht nochmals importiert.
+namens `processed` verschoben. Wird der Import nach einer Unterbrechung fortgesetzt, werden do die Dateien im Ordner `processed` nicht nochmals importiert.
 
 ## VuFind neu starten und Index optimieren
 

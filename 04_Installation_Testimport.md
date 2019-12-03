@@ -7,7 +7,7 @@ Um VuFind und seine Funktionen erstmalig in Augenschein zu nehmen, empfiehlt sic
 Öffnen Sie das Verzeichnis Testdaten auf dem Downloadserver data.dnb.de der Deutschen Nationalbibliothek:
 <https://data.dnb.de/testdat/>
 
-Laden Sie die Datei ```Atest.utf8.mrc``` in das Verzeichnis ```Downloads ``` Ihres Homeverzeichnisses herunter (Rechtsklick auf den Dateinamen und "Ziel speichern unter..." wählen).
+Laden Sie die Datei `Atest.utf8.mrc` in das Verzeichnis `Downloads` Ihres Homeverzeichnisses herunter (Rechtsklick auf den Dateinamen und "Ziel speichern unter..." wählen).
 
 ![](media/04/image1.png)
 
@@ -15,13 +15,13 @@ Laden Sie die Datei ```Atest.utf8.mrc``` in das Verzeichnis ```Downloads ``` Ihr
 
 Starten Sie die Suchmaschine Solr im Terminal (erforderlich nach jedem Neustart):
 
-```
+```bash
 /usr/local/vufind/solr.sh start
 ```
 
 ## Anpassung der Einstellungen für den Import
 
-Öffnen Sie die Datei `marc_local.properties ` im Verzeichnis `/usr/local/vufind/import/` mit einem Texteditor und editieren Sie die drei Werte `collection`, `institution` und `building` wie folgt:
+Öffnen Sie die Datei `marc_local.properties` im Verzeichnis `/usr/local/vufind/import/` mit einem Texteditor und editieren Sie die drei Werte `collection`, `institution` und `building` wie folgt:
 
 ![](media/04/image3.png)
 
@@ -31,7 +31,7 @@ Achten Sie darauf, dass Sie jeweils das führende `#`-Zeichen entfernen. Speiche
 
 Starten Sie den Import:
 
-```
+```bash
 /usr/local/vufind/import-marc.sh ~/Downloads/Atest.utf8.mrc
 ```
 
@@ -54,7 +54,7 @@ Die Suchdauer lässt sich verkürzen, indem Sie den Index optimieren. Außerdem 
 
 Führen Sie im Terminal folgenden Befehl aus:
 
-```
+```bash
 php /usr/local/vufind/util/optimize.php
 ```
 
@@ -68,7 +68,7 @@ Fahren Sie das Betriebssystem herunter und setzen Sie in VirtualBox einen weiter
 
 ## Weitere Informationen zum Datenimport
 
-Beim Datenimport werden die einzelnen Felder eines Datensatzes einem Indexfeld im Solr-Index zugeordnet. Dies kann mit Hilfe von Einstellungsdateien wie der oben verwendeten ```marc_local.properties``` beeinflusst werden. Die Einstellungen steuern, welche Felder aus den zu importierenden Daten in welches Indexfeld im Solr-Index importiert werden.
+Beim Datenimport werden die einzelnen Felder eines Datensatzes einem Indexfeld im Solr-Index zugeordnet. Dies kann mit Hilfe von Einstellungsdateien wie der oben verwendeten `marc_local.properties` beeinflusst werden. Die Einstellungen steuern, welche Felder aus den zu importierenden Daten in welches Indexfeld im Solr-Index importiert werden.
 
 Direkt in VuFind importieren können Sie Daten in den Formaten:
 

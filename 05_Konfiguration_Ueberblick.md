@@ -25,7 +25,7 @@ Während des Tutorials werden wir mit den Dateien `config.ini` und `facets.ini` 
 
 Lassen Sie sich die Inhalte des lokalen Konfigurationsverzeichnisses im Terminal anzeigen:
 
-```
+```bash
 ls /usr/local/vufind/local/config/vufind
 ```
 
@@ -33,9 +33,9 @@ ls /usr/local/vufind/local/config/vufind
 
 Die Dateien `config.ini` und `NoILS.ini`wurden während der Installation beim Schritt „Autokonfiguration“ angelegt. Für unser Tutorial fehlt noch die Datei `facets.ini`.
 
-Kopieren Sie die Datei ```facets.ini```aus dem globalen Konfigurationsverzeichnis in das lokale Konfigurationsverzeichnis mit folgendem Befehl:
+Kopieren Sie die Datei `facets.ini` aus dem globalen Konfigurationsverzeichnis in das lokale Konfigurationsverzeichnis mit folgendem Befehl:
 
-```
+```bash
 cp /usr/local/vufind/config/vufind/facets.ini /usr/local/vufind/local/config/vufind
 ```
 

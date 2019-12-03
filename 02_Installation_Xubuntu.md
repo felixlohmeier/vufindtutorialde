@@ -193,7 +193,7 @@ Das Terminal öffnet eine sogenannte Kommandozeile. Dort können Sie Systembefeh
 
 Tippen Sie im Terminal diesen Befehl ein und führen diesen durch Drücken der Enter-Taste aus:
 
-```
+```bash
 sudo apt-get install dkms
 ```
 
@@ -218,7 +218,7 @@ Mit dem soeben ausgeführten Befehl wechseln Sie innerhalb des Terminal auf die 
 
 Geben Sie diesen Befehl ein und führen Sie diesen aus:
 
-```
+```bash
 sudo sh ./VBoxLinuxAdditions.run
 ```
 

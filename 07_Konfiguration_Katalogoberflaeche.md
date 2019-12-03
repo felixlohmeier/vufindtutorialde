@@ -8,7 +8,7 @@ In diesem Kapitel werden wir ein eigenes Theme anlegen, den Footer von VuFind an
 
 Mit Version 4.1 bietet VuFind ein Kommandozeilen-Tool, um ein neues Theme zu erstellen. Das letzte Wort im folgenden Befehl definiert den Namen für das neue Theme (hier werden wir `malis14` verwenden).
 
-```
+```bash
 php /usr/local/vufind/public/index.php generate theme malis14
 ```
 
@@ -20,7 +20,7 @@ Die Dateien für das neue Theme liegen anschließend im Ordner `/usr/local/vufin
 
 Kopieren Sie mit dem folgenden Befehl die Template-Datei `footer.phtml` aus dem Standard-Theme (`/usr/local/vufind/themes/bootstrap3/templates/`) in das Verzeichnis `templates` Ihres Themes.
 
-```
+```bash
 cp /usr/local/vufind/themes/bootstrap3/templates/footer.phtml /usr/local/vufind/themes/malis14/templates/
 ```
 
@@ -41,12 +41,13 @@ Die Änderung wird sofort auf der Webseite sichtbar:
 
 Legen Sie im Verzeichnis `/usr/local/vufind/themes/malis14` das gewünschte Logo ab. Wenn Sie kein eigenes Logo parat haben, können Sie das hier verwendete  `malis.png` herunterladen:
 
-```
+```bash
 wget https://raw.githubusercontent.com/felixlohmeier/vufindtutorialde/master/media/07/malis.png -O /usr/local/vufind/themes/malis14/images/malis.png
 ```
 
 Stellen Sie mit folgendem Befehl sicher, dass das Logo vom Webserver gelesen werden kann:
-```
+
+```bash
 chmod +r /usr/local/vufind/themes/malis14/images/malis.png
 ```
 
@@ -55,7 +56,7 @@ chmod +r /usr/local/vufind/themes/malis14/images/malis.png
 1. Ersetzen Sie `@image-path: "../../local_theme_example/images";` durch `@image-path: "../../images";`
 2. Ersetzen Sie den Abschnitt `header` wie folgt:
 
-```
+```css
 header {
   .navbar {
     .navbar-brand {
@@ -73,7 +74,7 @@ Unter `background-image` tragen Sie den Pfad Ihres Bildes ein. Die Angaben bei `
 
 Führen Sie abschließend den folgenden Befehl im Terminal aus, um die veränderte Konfiguration zu aktivieren:
 
-```
+```bash
 php /usr/local/vufind/util/cssBuilder.php
 ```
 

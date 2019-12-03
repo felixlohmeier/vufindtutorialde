@@ -11,7 +11,7 @@ In den vorigen beiden Kapiteln haben Sie ein Ubuntu-Linux-Betriebssystem (16.04 
 
 Vor der Installation sollte das Betriebssystem auf den aktuellsten Stand gebracht werden. Führen Sie dazu folgenden Befehl im Terminal aus:
 
-```
+```bash
 sudo apt-get update && sudo apt-get dist-upgrade
 ```
 
@@ -19,7 +19,7 @@ Der Installation der Updates müssen Sie mit der Antwort „J“ auf die Frage �
 
 Anschließend sollte das System neu gestartet werden:
 
-```
+```bash
 sudo shutdown -r now
 ```
 
@@ -27,7 +27,7 @@ sudo shutdown -r now
 
 Führen Sie im Terminal folgenden Befehl aus:
 
-```
+```bash
 wget http://downloads.sourceforge.net/vufind/vufind_4.1.1.deb?use_mirror=osdn -O ~/vufind_4.1.1.deb
 ```
 
@@ -39,7 +39,7 @@ Die Installationsdatei (ein sogenanntes Paket) wird in Ihr Homeverzeichnis herun
 
 Führen Sie im Terminal folgenden Befehl aus:
 
-```
+```bash
 sudo apt install -f ~/vufind_4.1.1.deb
 ```
 
@@ -63,7 +63,7 @@ Der Hinweis „Es ist ein Fehler aufgetreten“ erscheint, weil die Suchmaschine
 
 Führen Sie im Terminal folgenden Befehl aus:
 
-```
+```bash
 source /etc/profile
 ```
 
@@ -71,7 +71,7 @@ Durch diesen Befehl werden die Umgebungsvariablen neu eingelesen, was uns einen 
 
 Geben Sie folgende Befehle ein, um notwendige Berechtigungen für Solr und VuFind zu konfigurieren:
 
-```
+```bash
 sudo chown -R $(id -u):$(id -g) /usr/local/vufind/
 sudo chown -R www-data:www-data /usr/local/vufind/local/config
 sudo chown -R www-data:www-data /usr/local/vufind/local/cache
@@ -81,7 +81,7 @@ Der erste Befehl setzt den aktuell angemeldeten Nutzer als Eigentümer des Verze
 
 Starten Sie dann den Suchindex Solr:
 
-```
+```bash
 /usr/local/vufind/solr.sh start
 ```
 
@@ -125,7 +125,7 @@ Wählen Sie „NoILS“ aus der Liste aus. Klicken Sie anschließend „Daten ab
 
 Zurück auf der Konfigurationsseite erhalten wir weiterhin die Fehlermeldung "ILS... Fehlgeschlagen". Die Autokonfiguration hat die Einstellung auf NoILS mit der Option „ils-offline“ gesetzt, die für Wartungsarbeiten gedacht ist. Wir müssen diese noch auf „ils-none“ setzen, um VuFind zu signalisieren, dass tatsächlich kein Lokalsystem angebunden ist. Diese Einstellung ist in der Datei `/usr/local/vufind/local/config/vufind/NoILS.ini` vorzunehmen. Geben Sie dazu im Terminal folgenden Befehl ein:
 
-```
+```bash
 sudo sed -i 's/mode = ils-offline/mode = ils-none/g' /usr/local/vufind/local/config/vufind/NoILS.ini
 ```
 
@@ -143,7 +143,7 @@ Klicken Sie „Disable Auto Configuration“ an.
 
 Dies wird mit „Auto configuration has been successfully disabled.“ und der Empfehlung quittiert, die Berechtigungen für das Konfigurationsverzeichnis sicherheitshalber anzupassen. Geben Sie dazu noch den folgenden Befehl ins Terminal ein:
 
-```
+```bash
 sudo chown -R $(id -u):$(id -g) /usr/local/vufind/local/config
 ```
 
