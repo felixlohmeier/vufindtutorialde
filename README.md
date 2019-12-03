@@ -18,7 +18,7 @@ Das Vorhaben wurde auf dem [6. VuFind-Anwendertreffen](http://www.vufind.de/anwe
 
 ## Formate
 
-* Lesefassung bei GitHub Pages (HTML): <https://felixlohmeier.github.io/vufindtutorialde>
+* Lesefassung bei GitHub Pages (HTML): <https://vufind.felixlohmeier.de>
 * Repository bei GitHub (zum Nachnutzen): <https://github.com/felixlohmeier/vufindtutorialde>
 
 ## Inhalte
