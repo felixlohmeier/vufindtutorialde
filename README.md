@@ -18,8 +18,9 @@ Das Vorhaben wurde auf dem [6. VuFind-Anwendertreffen](http://www.vufind.de/anwe
 
 ## Formate
 
-* Lesefassung bei GitHub Pages (HTML): <https://vufind.felixlohmeier.de>
-* Repository bei GitHub (zum Nachnutzen): <https://github.com/felixlohmeier/vufindtutorialde>
+* Lesefassung via Docsify (HTML): <https://vufind.felixlohmeier.de>
+* Quellcode bei GitHub (Markdown): <https://github.com/felixlohmeier/vufindtutorialde>
+* Quellcode bei Zenodo (Markdown): <https://doi.org/10.5281/zenodo.3560813>
 
 ## Inhalte
 
